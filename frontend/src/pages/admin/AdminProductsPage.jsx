@@ -80,7 +80,7 @@ const AdminProductsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editTargetId, setEditTargetId] = useState(null);
   const [formData, setFormData] = useState(INITIAL_FORM_STATE);
-  
+
   // File upload state
   const fileInputRef = useRef(null);
   const [pendingUploads, setPendingUploads] = useState([]);
@@ -198,8 +198,8 @@ const AdminProductsPage = () => {
       try {
         // Compress Image (Critical for Android)
         const compressedBlob = await compressImage(uploadItem.file);
-        
-        setPendingUploads(prev => prev.map(p => 
+
+        setPendingUploads(prev => prev.map(p =>
           p.id === uploadItem.id ? { ...p, status: 'uploading', progress: 10 } : p
         ));
 
@@ -222,7 +222,7 @@ const AdminProductsPage = () => {
         const res = await axiosInstance.post('/api/admin/upload', fData, {
           onUploadProgress: (progressEvent) => {
             const percentCompleted = getProgressPercent(progressEvent);
-            setPendingUploads(prev => prev.map(p => 
+            setPendingUploads(prev => prev.map(p =>
               p.id === uploadItem.id ? { ...p, progress: percentCompleted } : p
             ));
           }
@@ -702,11 +702,10 @@ const AdminProductsPage = () => {
                     */}
                     <label
                       htmlFor="productImageInput"
-                      className={`w-full flex flex-col items-center justify-center p-6 sm:p-8 border-2 border-dashed rounded-xl transition-all cursor-pointer select-none ${
-                        isMobile
-                          ? 'bg-white border-primary-300 active:border-primary-500 shadow-sm min-h-[140px]'
-                          : 'bg-white border-gray-300 hover:border-primary-400 hover:bg-primary-50/50'
-                      }`}
+                      className={`w-full flex flex-col items-center justify-center p-6 sm:p-8 border-2 border-dashed rounded-xl transition-all cursor-pointer select-none ${isMobile
+                        ? 'bg-white border-primary-300 active:border-primary-500 shadow-sm min-h-[140px]'
+                        : 'bg-white border-gray-300 hover:border-primary-400 hover:bg-primary-50/50'
+                        }`}
                     >
                       <div className="w-12 h-12 bg-primary-50 text-primary-600 rounded-full flex items-center justify-center mb-3 pointer-events-none">
                         {isMobile ? <Camera className="h-6 w-6" /> : <Upload className="h-6 w-6" />}

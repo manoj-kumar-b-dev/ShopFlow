@@ -26,6 +26,8 @@ const OrderConfirmationPage = lazy(() => import('./pages/OrderConfirmationPage')
 const PaymentFailedPage = lazy(() => import('./pages/PaymentFailedPage'));
 const DashboardPage = lazy(() => import('./pages/DashboardPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const ForgotPasswordPage = lazy(() => import('./pages/ForgotPasswordPage'));
+const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage'));
 
 // Admin Subsystem lazy declarations
 const AdminLayout = lazy(() => import('./pages/admin/AdminLayout'));
@@ -73,6 +75,8 @@ function App() {
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/admin/login" element={<AdminLoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
+                    <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+                    <Route path="/reset-password/:resettoken" element={<ResetPasswordPage />} />
                     <Route path="/cart" element={<CartPage />} />
 
                     {/* Authenticated Client Channels */}
