@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ShieldCheck, Eye, EyeOff, AlertCircle, CheckCircle, Loader } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
+import appLogo from '../assets/logo.png';
 
 const AdminLoginPage = () => {
   const [email, setEmail] = useState('');
@@ -89,9 +90,9 @@ const AdminLoginPage = () => {
         <div className="bg-white p-8 rounded-xl shadow-2xl border border-gray-200">
           {/* Header */}
           <div className="text-center mb-8">
-            <div className="mx-auto h-14 w-14 rounded-full bg-gradient-to-br from-primary-600 to-primary-700 text-white flex items-center justify-center shadow-lg mb-4">
-              <ShieldCheck className="h-7 w-7" />
-            </div>
+            <Link to="/" className="inline-block mb-4">
+              <img src={appLogo} alt="ShopFlow Logo" className="h-14 w-14 object-contain mx-auto" />
+            </Link>
             <h1 className="text-3xl font-bold tracking-tight text-gray-900">Admin Console</h1>
             <p className="mt-2 text-sm text-gray-600">
               Secure administrative access for store management
@@ -133,8 +134,8 @@ const AdminLoginPage = () => {
                   handleInputChange('email');
                 }}
                 className={`w-full px-4 py-2.5 border rounded-lg shadow-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${validationErrors.email
-                    ? 'border-danger-300 focus:border-danger-300 focus:ring-danger-500 bg-danger-50'
-                    : 'border-gray-300 focus:border-primary-300 focus:ring-primary-500 bg-white'
+                  ? 'border-danger-300 focus:border-danger-300 focus:ring-danger-500 bg-danger-50'
+                  : 'border-gray-300 focus:border-primary-300 focus:ring-primary-500 bg-white'
                   }`}
                 placeholder="admin@example.com"
                 disabled={submitting}
@@ -165,8 +166,8 @@ const AdminLoginPage = () => {
                     handleInputChange('password');
                   }}
                   className={`w-full px-4 py-2.5 pr-12 border rounded-lg shadow-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${validationErrors.password
-                      ? 'border-danger-300 focus:border-danger-300 focus:ring-danger-500 bg-danger-50'
-                      : 'border-gray-300 focus:border-primary-300 focus:ring-primary-500 bg-white'
+                    ? 'border-danger-300 focus:border-danger-300 focus:ring-danger-500 bg-danger-50'
+                    : 'border-gray-300 focus:border-primary-300 focus:ring-primary-500 bg-white'
                     }`}
                   placeholder="••••••••"
                   disabled={submitting}

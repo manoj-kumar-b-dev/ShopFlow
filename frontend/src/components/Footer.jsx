@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Send, Heart } from 'lucide-react';
+import appLogo from '../assets/logo.png';
 
 // Brand icons removed from lucide-react — using inline SVGs instead
 const Facebook = ({ className }) => (
@@ -66,10 +67,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12 text-center sm:text-left">
           {/* Brand Column */}
           <div className="lg:col-span-1 flex flex-col items-center sm:items-start">
-            <Link to="/" className="flex items-center gap-2 mb-6 group inline-flex">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-primary-700 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-primary-600/50 transition-all">
-                <span className="text-white font-heading font-bold text-lg">S</span>
-              </div>
+            <Link to="/" className="flex items-center gap-2.5 mb-6 group inline-flex">
+              <img src={appLogo} alt="ShopFlow Logo" className="w-10 h-10 object-contain rounded-xl transition-transform duration-300 group-hover:scale-105" />
               <span className="font-heading font-bold text-xl group-hover:text-primary-400 transition-colors">ShopFlow</span>
             </Link>
             <p className="text-gray-400 text-sm mb-6 leading-relaxed max-w-xs mx-auto sm:mx-0">

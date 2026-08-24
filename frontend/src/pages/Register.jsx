@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { ShoppingBag, Eye, EyeOff, CheckCircle, Upload, ArrowRight, ShieldCheck } from 'lucide-react';
+import appLogo from '../assets/logo.png';
 
 const RegisterPage = () => {
   const [name, setName] = useState('');
@@ -73,7 +74,7 @@ const RegisterPage = () => {
       if (avatar) {
         formData.append('avatar', avatar);
       }
-      
+
       await register(formData);
       navigate('/');
     } catch (err) {
@@ -95,9 +96,9 @@ const RegisterPage = () => {
         </div>
 
         <div className="max-w-md text-center relative z-10">
-          <div className="w-20 h-20 bg-white/15 backdrop-blur-md rounded-3xl flex items-center justify-center mx-auto mb-8 border border-white/20 shadow-xl">
-            <ShoppingBag className="h-10 w-10 text-white" />
-          </div>
+          <Link to="/" className="inline-block group mb-8">
+            <img src={appLogo} alt="ShopFlow Logo" className="w-20 h-20 object-contain mx-auto transition-transform duration-300 group-hover:scale-105" />
+          </Link>
           <h1 className="text-4xl lg:text-5xl font-heading font-bold text-white mb-6 leading-tight">
             Join ShopFlow Today
           </h1>
@@ -137,9 +138,9 @@ const RegisterPage = () => {
       <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12 bg-white relative">
         <div className="w-full max-w-md space-y-8 animate-fade-in relative z-10">
           <div className="text-center lg:text-left">
-            <div className="lg:hidden w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary-600/20">
-              <ShoppingBag className="h-8 w-8 text-white" />
-            </div>
+            <Link to="/" className="lg:hidden inline-block mb-6">
+              <img src={appLogo} alt="ShopFlow Logo" className="w-16 h-16 object-contain mx-auto" />
+            </Link>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">Create Account</h2>
             <p className="mt-3 text-gray-600 text-base">
               Already have an account?{' '}
@@ -164,19 +165,19 @@ const RegisterPage = () => {
             {/* Avatar Upload Section */}
             <div className="flex flex-col items-center justify-center mb-8">
               <div className="relative group cursor-pointer w-28 h-28 rounded-full overflow-hidden border-4 border-gray-100 bg-gray-50 mb-3 shadow-sm hover:border-primary-200 transition-colors">
-                <img 
-                  src={avatarPreview || 'https://placehold.co/150x150?text=Avatar'} 
-                  alt="Avatar Preview" 
-                  className="h-full w-full object-cover" 
+                <img
+                  src={avatarPreview || 'https://placehold.co/150x150?text=Avatar'}
+                  alt="Avatar Preview"
+                  className="h-full w-full object-cover"
                 />
                 <label className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-white backdrop-blur-sm">
                   <Upload className="h-6 w-6 mb-1" />
                   <span className="text-[10px] font-bold uppercase tracking-wider">Upload</span>
-                  <input 
-                    type="file" 
-                    accept="image/jpeg, image/png, image/webp" 
-                    onChange={handleAvatarChange} 
-                    className="hidden" 
+                  <input
+                    type="file"
+                    accept="image/jpeg, image/png, image/webp"
+                    onChange={handleAvatarChange}
+                    className="hidden"
                   />
                 </label>
               </div>
@@ -250,14 +251,14 @@ const RegisterPage = () => {
                       <div
                         key={i}
                         className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${i < passwordStrength
-                            ? passwordStrength === 1
-                              ? 'bg-danger-500'
-                              : passwordStrength === 2
-                                ? 'bg-amber-500'
-                                : passwordStrength === 3
-                                  ? 'bg-primary-500'
-                                  : 'bg-success-500'
-                            : 'bg-gray-100'
+                          ? passwordStrength === 1
+                            ? 'bg-danger-500'
+                            : passwordStrength === 2
+                              ? 'bg-amber-500'
+                              : passwordStrength === 3
+                                ? 'bg-primary-500'
+                                : 'bg-success-500'
+                          : 'bg-gray-100'
                           }`}
                       />
                     ))}
@@ -304,9 +305,9 @@ const RegisterPage = () => {
                 'Create Account'
               )}
             </button>
-            
+
             <p className="text-xs text-center text-gray-500 mt-6 leading-relaxed">
-              By creating an account, you agree to our <br/>
+              By creating an account, you agree to our <br />
               <Link to="/terms" className="text-primary-600 font-semibold hover:underline">Terms of Service</Link> and <Link to="/privacy" className="text-primary-600 font-semibold hover:underline">Privacy Policy</Link>.
             </p>
           </form>

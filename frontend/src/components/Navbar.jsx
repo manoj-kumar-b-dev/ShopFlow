@@ -4,6 +4,7 @@ import { Menu, X, ShoppingCart, Heart, User, LogOut, Search, Bell } from 'lucide
 import { AuthContext } from '../context/AuthContext';
 import { CartContext } from '../context/CartContext';
 import SearchBar from './SearchBar';
+import appLogo from '../assets/logo.png';
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -51,9 +52,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo - Left */}
           <Link to="/" className="flex items-center gap-2.5 flex-shrink-0 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-600 to-primary-700 rounded-xl flex items-center justify-center group-hover:shadow-lg group-hover:shadow-primary-500/25 transition-all duration-300">
-              <span className="text-white font-heading font-bold text-lg">S</span>
-            </div>
+            <img src={appLogo} alt="ShopFlow Logo" className="w-10 h-10 object-contain rounded-lg transition-transform duration-300 group-hover:scale-105" />
             <span className="font-heading font-bold text-xl text-gray-900 hidden sm:block group-hover:text-primary-600 transition-colors">ShopFlow</span>
           </Link>
 
@@ -201,9 +200,7 @@ const Navbar = () => {
             {/* Drawer Header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
               <Link to="/" onClick={handleCloseMobileMenu} className="flex items-center gap-2.5">
-                <div className="w-9 h-9 bg-gradient-to-br from-primary-600 to-primary-700 rounded-xl flex items-center justify-center">
-                  <span className="text-white font-heading font-bold text-base">S</span>
-                </div>
+                <img src={appLogo} alt="ShopFlow Logo" className="w-9 h-9 object-contain rounded-xl" />
                 <span className="font-heading font-bold text-lg text-gray-900">ShopFlow</span>
               </Link>
               <button

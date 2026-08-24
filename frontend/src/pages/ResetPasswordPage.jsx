@@ -1,7 +1,8 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { ShoppingBag, Eye, EyeOff, AlertCircle, CheckCircle, LockKeyhole } from "lucide-react";
+import appLogo from "../assets/logo.png";
 import axiosInstance from "../utils/axiosInstance";
 
 const ResetPasswordPage = () => {
@@ -60,9 +61,9 @@ const ResetPasswordPage = () => {
           <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-accent-400/10 rounded-full blur-3xl" />
         </div>
         <div className="max-w-md text-center relative z-10">
-          <div className="w-20 h-20 bg-white/15 backdrop-blur-md rounded-3xl flex items-center justify-center mx-auto mb-8 border border-white/20 shadow-xl">
-            <ShoppingBag className="h-10 w-10 text-white" />
-          </div>
+          <Link to="/" className="inline-block group mb-8">
+            <img src={appLogo} alt="ShopFlow Logo" className="w-20 h-20 object-contain mx-auto transition-transform duration-300 group-hover:scale-105" />
+          </Link>
           <h1 className="text-4xl lg:text-5xl font-heading font-bold text-white mb-6 leading-tight">
             Create a new password
           </h1>
@@ -92,9 +93,9 @@ const ResetPasswordPage = () => {
 
           {/* Header */}
           <div className="text-center lg:text-left">
-            <div className="lg:hidden w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary-600/20">
-              <ShoppingBag className="h-8 w-8 text-white" />
-            </div>
+            <Link to="/" className="lg:hidden inline-block mb-6">
+              <img src={appLogo} alt="ShopFlow Logo" className="w-16 h-16 object-contain mx-auto" />
+            </Link>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">New Password</h2>
             <p className="mt-3 text-gray-600 text-base">Set a new password for your ShopFlow account.</p>
           </div>

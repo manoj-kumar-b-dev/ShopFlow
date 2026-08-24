@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { LayoutDashboard, ShoppingBag, Truck, Users, Menu, X, ArrowLeft, LogOut, Bell, Search, ChevronRight } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
+import appLogo from '../../assets/logo.png';
 
 const SIDEBAR_ITEMS = [
   { path: '/admin', name: 'Dashboard', icon: LayoutDashboard },
@@ -66,15 +67,13 @@ const AdminLayout = () => {
         {/* Logo Area */}
         <div className="flex items-center justify-between p-6 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/20">
-              <span className="text-white font-bold text-lg">SF</span>
-            </div>
+            <img src={appLogo} alt="ShopFlow Admin Logo" className="w-10 h-10 object-contain rounded-xl" />
             <div>
               <h1 className="font-bold text-white text-xl tracking-tight">ShopFlow</h1>
               <p className="text-xs text-gray-400 font-medium">Admin Workspace</p>
             </div>
           </div>
-          <button 
+          <button
             onClick={() => setIsOpen(false)}
             className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors text-gray-400 hover:text-white"
           >
@@ -94,8 +93,8 @@ const AdminLayout = () => {
                 to={item.path}
                 onClick={() => setIsOpen(false)}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium transition-all group ${isActive
-                    ? 'bg-primary-600/10 text-white'
-                    : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                  ? 'bg-primary-600/10 text-white'
+                  : 'text-gray-400 hover:bg-white/5 hover:text-white'
                   }`}
               >
                 <div className={`p-1.5 rounded-lg transition-colors ${isActive ? 'bg-primary-600 text-white' : 'group-hover:bg-white/10'}`}>
@@ -141,11 +140,11 @@ const AdminLayout = () => {
               <ChevronRight className="h-4 w-4" />
               <span className="text-gray-900">{pageTitle}</span>
             </div>
-            
+
             <div className="max-w-md w-full relative">
-              <input 
-                type="text" 
-                placeholder="Search orders, products, users..." 
+              <input
+                type="text"
+                placeholder="Search orders, products, users..."
                 className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:bg-white focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
               />
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -158,11 +157,11 @@ const AdminLayout = () => {
               <Bell className="h-5 w-5" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
             </button>
-            
+
             <div className="h-6 w-px bg-gray-200 mx-1"></div>
-            
+
             <div className="relative">
-              <button 
+              <button
                 className="flex items-center gap-3 hover:bg-gray-50 p-1.5 rounded-lg transition-colors"
                 onClick={() => setShowProfileMenu(!showProfileMenu)}
               >
@@ -174,7 +173,7 @@ const AdminLayout = () => {
                   {user?.name?.charAt(0).toUpperCase() || 'A'}
                 </div>
               </button>
-              
+
               {showProfileMenu && (
                 <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-50 animate-fade-in-scale origin-top-right">
                   <div className="px-4 py-2 border-b border-gray-100 lg:hidden">

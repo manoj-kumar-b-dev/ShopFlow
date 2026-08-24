@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { ShoppingBag, Eye, EyeOff, AlertCircle, ArrowRight } from 'lucide-react';
+import appLogo from '../assets/logo.png';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -50,9 +51,9 @@ const LoginPage = () => {
 
         {/* Content */}
         <div className="max-w-md text-center relative z-10">
-          <div className="w-20 h-20 bg-white/15 backdrop-blur-md rounded-3xl flex items-center justify-center mx-auto mb-8 border border-white/20 shadow-xl">
-            <ShoppingBag className="h-10 w-10 text-white" />
-          </div>
+          <Link to="/" className="inline-block group mb-8">
+            <img src={appLogo} alt="ShopFlow Logo" className="w-20 h-20 object-contain mx-auto transition-transform duration-300 group-hover:scale-105" />
+          </Link>
           <h1 className="text-4xl lg:text-5xl font-heading font-bold text-white mb-6 leading-tight">
             Welcome Back to ShopFlow
           </h1>
@@ -81,9 +82,9 @@ const LoginPage = () => {
         <div className="w-full max-w-md space-y-8 animate-fade-in relative z-10">
           {/* Header */}
           <div className="text-center lg:text-left">
-            <div className="lg:hidden w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-primary-600/20">
-              <ShoppingBag className="h-8 w-8 text-white" />
-            </div>
+            <Link to="/" className="lg:hidden inline-block mb-6">
+              <img src={appLogo} alt="ShopFlow Logo" className="w-16 h-16 object-contain mx-auto" />
+            </Link>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-gray-900">Sign In</h2>
             <p className="mt-3 text-gray-600 text-base">
               New to ShopFlow?{' '}
@@ -171,7 +172,7 @@ const LoginPage = () => {
                     className="peer appearance-none h-5 w-5 border-2 border-gray-300 rounded-md checked:bg-primary-600 checked:border-primary-600 transition-all cursor-pointer group-hover:border-primary-400"
                   />
                   <svg className="absolute w-3.5 h-3.5 text-white pointer-events-none opacity-0 peer-checked:opacity-100 transition-opacity" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 5L4.5 8.5L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M1 5L4.5 8.5L13 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
                 <span className="text-sm font-semibold text-gray-700 group-hover:text-gray-900 transition-colors">
@@ -179,8 +180,8 @@ const LoginPage = () => {
                 </span>
               </label>
 
-              <Link 
-                to="/forgot-password" 
+              <Link
+                to="/forgot-password"
                 className="text-sm font-bold text-primary-600 hover:text-primary-700 transition-colors py-2"
               >
                 Forgot password?

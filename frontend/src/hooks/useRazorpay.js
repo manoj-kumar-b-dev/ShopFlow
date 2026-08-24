@@ -33,6 +33,7 @@ export const useRazorpay = () => {
         currency: data.currency,
         name: 'ShopFlow E-Commerce',
         description: `Settlement Pipeline - ID #${orderId}`,
+        image: '/logo.png',
         order_id: data.gatewayOrderId,
         prefill: {
           name: userInfo.name,
