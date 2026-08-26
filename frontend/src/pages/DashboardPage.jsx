@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { User, ShoppingBag, Heart, MapPin, Key, Upload, ChevronDown, ChevronUp, AlertCircle, RefreshCw, Check, Edit, Trash2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import UserAvatar from '../components/UserAvatar';
 import { AuthContext } from '../context/AuthContext';
 import { CartContext } from '../context/CartContext';
 import axiosInstance from '../utils/axiosInstance';
@@ -307,13 +308,13 @@ const DashboardPage = () => {
           <nav className="w-full md:w-72 flex-shrink-0 hidden md:block">
             <div className="bg-white border border-gray-200/80 rounded-3xl p-5 shadow-sm sticky top-28">
               <div className="p-4 text-center border-b border-gray-100 mb-5">
-                <div className="w-20 h-20 rounded-full mx-auto overflow-hidden border-4 border-gray-50 shadow-sm mb-3">
-                  <img
-                    src={avatarUrl || 'https://placehold.co/150x150?text=User'}
-                    alt="Profile"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
+                <UserAvatar
+                  user={user}
+                  customAvatarUrl={avatarUrl}
+                  sizeClass="w-20 h-20"
+                  textClass="text-3xl"
+                  className="mx-auto border-4 border-gray-50 shadow-sm mb-3"
+                />
                 <p className="text-lg font-heading font-bold text-gray-900">{user?.name}</p>
                 <p className="text-sm font-medium text-gray-500">{user?.email}</p>
               </div>
@@ -352,14 +353,19 @@ const DashboardPage = () => {
                   </div>
 
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 p-6 bg-gray-50 border border-gray-100 rounded-2xl">
-                    <div className="relative group cursor-pointer w-24 h-24 rounded-full overflow-hidden border-4 border-white shadow-sm flex-shrink-0">
-                      <img src={avatarUrl || 'https://placehold.co/150x150?text=User'} alt="Avatar" className="h-full w-full object-cover" />
+                    <UserAvatar
+                      user={user}
+                      customAvatarUrl={avatarUrl}
+                      sizeClass="w-24 h-24"
+                      textClass="text-4xl"
+                      className="border-4 border-white shadow-sm cursor-pointer"
+                    >
                       <label className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer text-white backdrop-blur-sm">
                         <Upload className="h-5 w-5 mb-1" />
                         <span className="text-[10px] font-bold uppercase tracking-wider">Change</span>
                         <input type="file" accept="image/*" onChange={handleAvatarUpload} className="hidden" />
                       </label>
-                    </div>
+                    </UserAvatar>
                     <div>
                       <p className="text-lg font-bold text-gray-900">Profile Picture</p>
                       <p className="text-sm text-gray-500 mt-1 mb-3">JPG, GIF or PNG. Max size of 5MB.</p>

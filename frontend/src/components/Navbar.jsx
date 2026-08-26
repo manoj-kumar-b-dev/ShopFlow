@@ -5,6 +5,7 @@ import { AuthContext } from '../context/AuthContext';
 import { CartContext } from '../context/CartContext';
 import SearchBar from './SearchBar';
 import appLogo from '../assets/logo.png';
+import UserAvatar from './UserAvatar';
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -114,13 +115,12 @@ const Navbar = () => {
                 {/* User Profile Dropdown */}
                 <div className="flex items-center gap-2 pl-3 ml-1 border-l border-gray-200">
                   <div className="flex items-center gap-2">
-                    <div className="w-9 h-9 bg-primary-100 rounded-full flex items-center justify-center overflow-hidden border-2 border-primary-200 hover:border-primary-400 transition-colors">
-                      {user.avatar ? (
-                        <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
-                      ) : (
-                        <User className="h-4 w-4 text-primary-600" />
-                      )}
-                    </div>
+                    <UserAvatar
+                      user={user}
+                      sizeClass="w-9 h-9"
+                      textClass="text-sm font-semibold"
+                      className="border-2 border-primary-200 hover:border-primary-400 transition-colors"
+                    />
                     <span className="text-sm font-medium text-gray-700 hidden lg:block">
                       Hi, {user.name.split(' ')[0]}
                     </span>
@@ -246,13 +246,12 @@ const Navbar = () => {
 
                   {/* Mobile User Info */}
                   <div className="px-4 py-3 flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center overflow-hidden border-2 border-primary-200">
-                      {user.avatar ? (
-                        <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
-                      ) : (
-                        <User className="h-5 w-5 text-primary-600" />
-                      )}
-                    </div>
+                    <UserAvatar
+                      user={user}
+                      sizeClass="w-10 h-10"
+                      textClass="text-base font-semibold"
+                      className="border-2 border-primary-200"
+                    />
                     <div>
                       <span className="text-sm font-semibold text-gray-900 block">
                         {user.name}

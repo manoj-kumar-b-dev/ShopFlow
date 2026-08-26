@@ -16,11 +16,13 @@ export const AuthProvider = ({ children }) => {
     const bootstrapAuth = async () => {
       try {
         const savedToken = localStorage.getItem('token');
-        const savedUser = localStorage.getItem('user');
 
-        if (savedToken && savedUser) {
+        // Only attempt verification if a token exists.
+        // We do NOT require a saved 'user' object — the token is the source of truth.
+        // This fixes logout-on-refresh when rememberMe=false (token saved, user object not saved).
+        if (savedToken) {
           try {
-            // Verify token with backend
+            // Verify token with backend — always fetch fresh user data
             const { data } = await axiosInstance.get(AUTH_ROUTES.ME);
             setUser(data.user);
             localStorage.setItem('user', JSON.stringify(data.user));
@@ -41,6 +43,7 @@ export const AuthProvider = ({ children }) => {
 
     bootstrapAuth();
   }, []);
+
 
   const loginUser = useCallback(async (email, password, rememberMe = true) => {
     setError(null);

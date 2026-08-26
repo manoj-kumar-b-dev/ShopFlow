@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { ShieldCheck, Trash2, RefreshCw, User, ShieldAlert, MoreVertical } from 'lucide-react';
 import axiosInstance from '../../utils/axiosInstance';
+import UserAvatar from '../../components/UserAvatar';
 
 const AdminUsersPage = () => {
   const [users, setUsers] = useState([]);
@@ -90,13 +91,11 @@ const AdminUsersPage = () => {
                   <tr key={user._id} className="hover:bg-gray-50/50 transition-colors">
                     <td className="px-4 py-3 md:px-6 md:py-4" data-label="User">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center border border-gray-200 overflow-hidden flex-shrink-0">
-                          {user.avatar ? (
-                            <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
-                          ) : (
-                            <span className="text-lg font-bold text-gray-500">{(user.name || 'U').charAt(0).toUpperCase()}</span>
-                          )}
-                        </div>
+                        <UserAvatar
+                          user={user}
+                          sizeClass="w-12 h-12"
+                          textClass="text-lg font-bold"
+                        />
                         <div className="text-left">
                           <p className="font-semibold text-gray-900">{user.name}</p>
                           <p className="text-xs text-gray-500 mt-0.5">{user.email}</p>
